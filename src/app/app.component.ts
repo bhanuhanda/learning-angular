@@ -1,21 +1,26 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
+import { AuthService } from "./Auth/auth.service";
 
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.scss"],
 })
-export class AppComponent {
-  title = "recipe-shopping";
-  loadedFeature: string = "recipe";
-  display: boolean = false;
+export class AppComponent implements OnInit {
+  //   title = "recipe-shopping";
+  //   loadedFeature: string = "recipe";
+  //   display: boolean = false;
 
-  constructor() {
-    setInterval(() => {
-      this.display = !this.display;
-    }, 500);
+  constructor(private authService: AuthService) {
+    //     setInterval(() => {
+    //       this.display = !this.display;
+    //     }, 500);
+    //   }
+    //   onNavigate(feature: string) {
+    //     this.loadedFeature = feature;
   }
-  onNavigate(feature: string) {
-    this.loadedFeature = feature;
+
+  ngOnInit() {
+    this.authService.autoLogin();
   }
 }
