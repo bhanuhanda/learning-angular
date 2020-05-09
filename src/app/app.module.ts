@@ -1,63 +1,36 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
+import { HttpClientModule } from "@angular/common/http";
 
 import { AppComponent } from "./app.component";
 import { HeaderComponent } from "./header/header.component";
-import { RecipesComponent } from "./recipes/recipes.component";
-import { RecipeListComponent } from "./recipes/recipe-list/recipe-list.component";
-import { RecipeItemComponent } from "./recipes/recipe-list/recipe-item/recipe-item.component";
-import { RecipeDetailComponent } from "./recipes/recipe-detail/recipe-detail.component";
-import { ShoppingListComponent } from "./shopping-list/shopping-list.component";
-import { ShoppingEditComponent } from "./shopping-list/shopping-edit/shopping-edit.component";
 import { BasicHighlilghtDirective } from "./practice/basicHighlight.directive";
 import { BetterHighlightDirective } from "./practice/better-highlight.directive";
 import { StructuralDirectiveDirective } from "./practice/structural-directive.directive";
-import { DropdownDirective } from "./shared/dropdown.directive";
-import { ShoppingListService } from "./shopping-list/shopping-list.service";
 import { AppRoutingModule } from "./app-routing.module";
-import { RecipeStartComponent } from "./recipes/recipe-start/recipe-start.component";
-import { RecipeEditComponent } from "./recipes/recipe-edit/recipe-edit.component";
-import { RecipesService } from "./recipes/recipes.service";
-import { AuthComponent } from "./Auth/auth.component";
-import { LoadingSpinnerComponent } from "./shared/loading-spinner/loading-spinner.component";
-import { AuthInterceptorService } from "./Auth/auth-interceptor.service";
+// import { RecipesModule } from "./recipes/recipes.module";
+// import { ShoppingListModule } from "./shopping-list/shopping-list.module";
+import { SharedModule } from "./shared/shared.module";
+import { CoreModule } from "./core.module";
+// import { AuthModule } from "./Auth/auth.module";
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    RecipesComponent,
-    RecipeListComponent,
-    RecipeItemComponent,
-    RecipeDetailComponent,
-    ShoppingListComponent,
-    ShoppingEditComponent,
     BasicHighlilghtDirective,
     BetterHighlightDirective,
     StructuralDirectiveDirective,
-    DropdownDirective,
-    RecipeStartComponent,
-    RecipeEditComponent,
-    AuthComponent,
-    LoadingSpinnerComponent,
   ],
   imports: [
     BrowserModule,
-    FormsModule,
-    ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
-  ],
-  providers: [
-    ShoppingListService,
-    RecipesService,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptorService,
-      multi: true,
-    },
+    // RecipesModule,
+    // ShoppingListModule,
+    SharedModule,
+    CoreModule,
+    // AuthModule,
   ],
   bootstrap: [AppComponent],
 })
