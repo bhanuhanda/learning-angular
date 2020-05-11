@@ -1,10 +1,16 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbarToggler"
+        aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation" (click)="toggleCollapsed()">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
       <a class="navbar-brand">Recipe Book</a>
     </div>
-    <div class="collapse navbar-collapse">
-      <ul class="nav navbar-nav">
+    <div class="navbar-collapse" id="navbarToggler" [ngClass]="{'collapse': collapsed}">
+      <ul class="nav navbar-nav" (click)="autoClose()">
         <li routerLinkActive="active" *ngIf="isAuthenticated"><a routerLink="recipes">Recipes</a></li>
         <li routerLinkActive="active" *ngIf="!isAuthenticated"><a routerLink="auth">Authenticate</a></li>
         <li routerLinkActive="active">
@@ -12,14 +18,14 @@
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li *ngIf="isAuthenticated">
+        <li *ngIf="isAuthenticated" (click)="autoClose()">
           <a (click)="onLogout()">Logout</a>
         </li>
         <li class="dropdown" appDropdown *ngIf="isAuthenticated">
           <a class="dropdown-toggle" role="button">Manage <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a (click)="onSaveData()">Save Data</a></li>
-            <li><a (click)="onFetchData()">Fetch Data</a></li>
+            <li><a (click)="onSaveData()" (click)="autoClose()">Save Data</a></li>
+            <li><a (click)="onFetchData()" (click)="autoClose()">Fetch Data</a></li>
           </ul>
         </li>
       </ul>

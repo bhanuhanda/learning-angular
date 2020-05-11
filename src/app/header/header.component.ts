@@ -24,6 +24,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   //   @Output() featureSelected = new EventEmitter<string>();
   private userSubscription: Subscription;
   isAuthenticated = false;
+  collapsed = true;
 
   constructor(
     private dataStorageService: DataStorageService,
@@ -40,6 +41,15 @@ export class HeaderComponent implements OnInit, OnDestroy {
   //   onSelect(feature: string) {
   //     this.featureSelected.emit(feature);
   //   }
+
+  toggleCollapsed() {
+    this.collapsed = !this.collapsed;
+  }
+  autoClose() {
+    if (!this.collapsed) {
+      this.collapsed = !this.collapsed;
+    }
+  }
   onSaveData() {
     this.dataStorageService.storeRecipes();
   }
